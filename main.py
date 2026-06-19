@@ -2,7 +2,7 @@ import os
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-from notifier import send_summary, make_voice_call
+from notifier import send_summary
 import base64
 import re
 from setuptools import setup
@@ -20,7 +20,8 @@ IMPORTANT_SENDERS = {
     #"info@content.goibibo.com"
     #"student@updates.internshala.com"
     #"linkedin@em.linkedin.com"
-    "vrajgovani253@gmail.com"
+    #"vrajgovani253@gmail.com"
+    "ISP Team from Internshala"
 }
 KEYWORD = "Hii"
 
@@ -106,7 +107,6 @@ def get_unread_emails(service):
             print("Important email from VIT found! Triggering call and Telegram...")
             message = f"📧 From: {email_cleaned}\nSubject: {subject}\n\n{snippet}"
             send_summary(message)
-            make_voice_call(message)
         else:
             print("Skipping email:")
             print("  From header:", sender)
